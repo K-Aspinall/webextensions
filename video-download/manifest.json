@@ -1,0 +1,24 @@
+{
+
+  "description": "Allows automated download of videos, capturing title, date and site",
+  "manifest_version": 2,
+  "name": "video-download",
+  "version": "1.0",
+  "homepage_url": "https://github.com/K-Aspinall/webextensions/tree/main/video-download",
+  "icons": {
+    "48": "icons/page-48.png"
+  },
+
+  "permissions": [
+    "downloads",
+    "downloads.open"
+  ],
+
+  "browser_action": {
+    "browser_style": true,
+    "default_icon": "icons/page-32.png",
+    "default_title": "Video download",
+    "default_popup": "popup/video_download.html"
+  }
+
+}
