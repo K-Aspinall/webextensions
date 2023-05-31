@@ -17,8 +17,8 @@
   "browser_action": {
     "browser_style": true,
     "default_icon": "icons/page-32.png",
-    "default_title": "Video download",
-    "default_popup": "popup/video_download.html"
+    "default_title": "Video downloader",
+    "default_popup": "dist/index.html"
   }
 
 }
