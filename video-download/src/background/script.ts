@@ -1,3 +1,5 @@
+import 'chrome'
+
 //Every time a tab is created...
 chrome.tabs.onCreated.addListener((tab) => {
     //run this code 
