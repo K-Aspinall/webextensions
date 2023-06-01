@@ -2,7 +2,6 @@
   "name": "video-download",
   "version": "1.0.0",
   "description": "Allows automated download of videos, capturing title, date and site.",
-  "main": "index.js",
   "repository": "https://github.com/K-Aspinall/webextensions/tree/main/video-download",
   "author": "K-Aspinall",
   "license": "MIT",
@@ -13,19 +12,18 @@
   },
   "dependencies": {
     "eslint": "^8.41.0",
-    "eslint-config-xtrict": "^3.0.1",
-    "parcel-bundler": "^1.12.5",
-    "parcel-plugin-web-ext-tool": "^0.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.0.4",
-    "web-ext": "^7.6.2",
-    "webextension-polyfill-ts": "^0.26.0"
+    "webextension-polyfill-ts": "^0.26.0",
+    "@types/chrome": "^0.0.237"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.237",
+    "@parcel/config-webextension": "^2.9.1",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
-    "parcel": "^2.9.1"
+    "parcel": "^2.9.1",
+    "parcel-reporter-web-ext": "^0.3.2",
+    "web-ext": "^7.6.2"
   }
 }
