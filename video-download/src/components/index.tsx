@@ -10,3 +10,10 @@ const Counter = () => {
         <button onClick={() => {setCount(count - 1)}}>decrement</button>
     </>)
 }
+
+
+/* We're now telling React to render this component on the webpage, inside 
+the first element it can find with an id of "root". Notice how this matches 
+the `div`-tag in our `index.html` :-) */
+console.log(document.getElementById("root"))
+ReactDOM.render(<Counter />, document.getElementById("root"));

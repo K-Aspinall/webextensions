@@ -8,8 +8,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "parcel build [input.ts] --experimental-scope-hoisting --no-source-maps --public-url ./",
-    "watch": "parcel watch [input.ts] --public-url ./"
+    "dev": "parcel watch src/index.html src/background/script.ts --public-url=./",
+    "build": "parcel build src/index.html src/background/script.ts --public-url=./"
   },
   "dependencies": {
     "eslint": "^8.41.0",

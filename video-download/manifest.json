@@ -19,6 +19,12 @@
     "default_icon": "icons/page-32.png",
     "default_title": "Video downloader",
     "default_popup": "dist/index.html"
+  },
+
+  "background": {
+    "scripts": [
+      "dist/background/script.js"
+    ]
   }
 
 }
