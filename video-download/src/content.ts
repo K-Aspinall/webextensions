@@ -1,6 +1,6 @@
 import { DOMMessage, DOMMessageResponse } from './types'
 
-// TODO: Complete implementation using blog.logrocket.com/creating-extension-react-typescript
+// TODO: Complete implementation using https://blog.logrocket.com/creating-chrome-extension-react-typescript/
 const messageFromReactAppListener = (msg: DOMMessage, sender: chrome.runtime.MessageSender, sendResponse: (response: DOMMessageResponse) => void) => {
     console.log('[content.js]. Message recieved: ', msg)
 

@@ -11,7 +11,8 @@
 
   "permissions": [
     "downloads",
-    "downloads.open"
+    "downloads.open",
+    "activeTab"
   ],
 
   "browser_action": {
@@ -25,6 +26,13 @@
     "scripts": [
       "dist/background/script.js"
     ]
-  }
+  },
+
+  "content_scripts": [
+    {
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["dist/content.js"]
+    }
+ ]
 
 }
