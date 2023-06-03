@@ -1,9 +1,29 @@
 import React from 'react';
-import { DOMMessage, DOMMessageResponse } from '../types';
+import { DOMMessage, DOMMessageResponse } from '../types/DOMMessage';
+
+function onStartedDownload(id) {
+  console.log(`Started downloading: ${id}`)
+}
+
+function onFailed(error) {
+  console.log(`Download failed: ${error}`)
+}
+
+function downloadVideoFile(videoUrl: string, fileName: string) {
+  let downloading = chrome.downloads.download({
+    url: videoUrl, 
+    filename: fileName, 
+    saveAs: true})
+
+  downloading.then(onStartedDownload, onFailed)
+}
 
 function App() {
   const [title, setTitle] = React.useState('');
-  const [headlines, setHeadlines] = React.useState<string[]>([]);
+  const [url, setUrl] = React.useState('');
+  const [site, setSite] = React.useState('');
+  const [date, setDate] = React.useState('');
+  const [fileName, setFileName] = React.useState('')
 
   React.useEffect(() => {
     /**
@@ -25,44 +45,56 @@ function App() {
         tabs[0].id || 0,
         { type: 'GET_DOM' } as DOMMessage,
         (response: DOMMessageResponse) => {
-            console.log(response)
+          console.log(response)
           setTitle(response.title);
-          setHeadlines(response.headlines);
+          setUrl(response.url);
+          setSite(response.site);
+          setDate(response.date);
+          setFileName(`${site} - ${date} - ${title}.mp4`);
         });
     });
   });
 
   return (
     <div className="App">
-      <h1>SEO Extension built with React!</h1>
+      <h1>1-Click download built with React!</h1>
 
       <ul className="SEOForm">
         <li className="SEOValidation">
-          <div className="SEOValidationField">
-            <span className="SEOValidationFieldTitle">Title</span>
-            <span className={`SEOValidationFieldStatus ${title.length < 30 || title.length > 65 ? 'Error' : 'Ok'}`}>
-              {title.length} Characters
-            </span>
-          </div>
           <div className="SEOVAlidationFieldValue">
             {title}
           </div>
         </li>
 
         <li className="SEOValidation">
-          <div className="SEOValidationField">
-            <span className="SEOValidationFieldTitle">Main Heading</span>
-            <span className={`SEOValidationFieldStatus ${headlines.length !== 1 ? 'Error' : 'Ok'}`}>
-              {headlines.length}
-            </span>
-          </div>
           <div className="SEOVAlidationFieldValue">
-            <ul>
-              {headlines.map((headline, index) => (<li key={index}>{headline}</li>))}
-            </ul>
+            {site}
           </div>
         </li>
+
+        <li className="SEOValidation">
+          <div className="SEOVAlidationFieldValue">
+            {date}
+          </div>
+        </li>
+
+        <li className="SEOValidation">
+          <div className="SEOValidationField">
+            <span className={`SEOValidationFieldStatus ${url.length > 1 ? 'Error' : 'Ok'}`}>
+              {url}
+            </span>
+          </div>
+        </li>
+
+        <li className="SEOValidation">
+          <div className="SEOVAlidationFieldValue">
+            {fileName}
+          </div>
+        </li>
+
       </ul>
+
+      <button disabled={fileName.length == 0 || url.length == 0}  onClick={() => downloadVideoFile(url, fileName)}>Download</button>
     </div>
   );
 }
