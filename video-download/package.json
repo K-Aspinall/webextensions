@@ -1,6 +1,6 @@
 {
   "name": "video-download",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Allows automated download of videos, capturing title, date and site.",
   "repository": "https://github.com/K-Aspinall/webextensions/tree/main/video-download",
   "author": "K-Aspinall",
